@@ -6,8 +6,6 @@ function SushiContainer({sushiList, sendToEatenArr, money}) {
 
   const [count, setcount] = useState(4)
 
-  //console.log("passed Array:", sushiList)
-
   const filterSushi = sushiList.filter((item)=> (item.id > count-4) && (item.id <= count))
   
   console.log(filterSushi)
@@ -17,11 +15,7 @@ function SushiContainer({sushiList, sendToEatenArr, money}) {
     setcount(()=> count + 4)
   }
 
-  // function busPlates() {
-  //   removeOnePlate()
-  // }
-
-
+ 
   const showSushi = filterSushi.map((item)=> {
     return <Sushi 
     key= {item.id}
@@ -36,9 +30,9 @@ function SushiContainer({sushiList, sendToEatenArr, money}) {
 ///////////////////////////////////////
   function eatSushi(name){
     //console.log(name)
-    let paid = filterSushi.filter((item)=> (item.name == name))
+    let pickedSushi = filterSushi.filter((item)=> (item.name == name))
     //console.log("paid:", paid)
-    sendToEatenArr(paid)
+    sendToEatenArr(pickedSushi)
   }
 
 

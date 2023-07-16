@@ -14,11 +14,11 @@ function App() {
 
 function sendToEatenArr(item){
   console.log("working", item)
-  
   if ((money-item[0].price) >= 0) {
     setMoney(money - item[0].price)
   } 
-  setEmptyPlatesArr([...emptyPlatesArr, item])
+  setEmptyPlatesArr([...emptyPlatesArr, item[0]])
+  console.log("plates:", emptyPlatesArr)
 }
 
 
@@ -31,7 +31,7 @@ function sendToEatenArr(item){
   return (
     <div className="app">
       <SushiContainer sushiList={sushiList} sendToEatenArr={sendToEatenArr} money={money}/>
-      <Table money={money} />
+      <Table money={money} emptyPlatesArr={emptyPlatesArr}/>
     </div>
   );
 }
