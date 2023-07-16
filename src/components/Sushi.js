@@ -2,13 +2,17 @@ import React, {useState} from "react";
 
 
 
-function Sushi({name, img_url, price}) {
+function Sushi({name, img_url, price, eatSushi, money}) {
 
   const [isEaten, setIsEaten] = useState(false)
 
   function takeSushi(){
-    console.log("taken")
-    setIsEaten(true)
+    if (money >= price){
+      setIsEaten(true)
+      eatSushi(name)
+    } else {
+      alert ("sorry, that's too expensive")
+    }
   }
 
   return (

@@ -2,11 +2,11 @@ import React, {useState} from "react";
 import Sushi from "./Sushi"
 import MoreButton from "./MoreButton";
 
-function SushiContainer({sushiList}) {
+function SushiContainer({sushiList, sendToEatenArr, money}) {
 
   const [count, setcount] = useState(4)
 
-  console.log("passed Array:", sushiList)
+  //console.log("passed Array:", sushiList)
 
   const filterSushi = sushiList.filter((item)=> (item.id > count-4) && (item.id <= count))
   
@@ -17,6 +17,10 @@ function SushiContainer({sushiList}) {
     setcount(()=> count + 4)
   }
 
+  // function busPlates() {
+  //   removeOnePlate()
+  // }
+
 
   const showSushi = filterSushi.map((item)=> {
     return <Sushi 
@@ -25,9 +29,17 @@ function SushiContainer({sushiList}) {
     name= {item.name}
     img_url= {item.img_url}
     price= {item.price}
+    eatSushi = {eatSushi}
+    money = {money}
     />
   })
-
+///////////////////////////////////////
+  function eatSushi(name){
+    //console.log(name)
+    let paid = filterSushi.filter((item)=> (item.name == name))
+    //console.log("paid:", paid)
+    sendToEatenArr(paid)
+  }
 
 
   return (
