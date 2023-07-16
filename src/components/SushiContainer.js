@@ -18,8 +18,6 @@ function SushiContainer({sushiList}) {
   }
 
 
-
-
   const showSushi = filterSushi.map((item)=> {
     return <Sushi 
     key= {item.id}
